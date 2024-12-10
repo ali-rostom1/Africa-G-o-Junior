@@ -57,7 +57,7 @@
         </div>
       </div>
       <div class="items-center justify-end hidden col-span-1 md:flex">
-        <img class="w-4/5 rounded-md" src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/header-1.png" alt="header image">
+        <img class="w-4/5 rounded-md" src="assets/images/hero_africa.png" alt="header image">
       </div>
     </div>
   </div>
