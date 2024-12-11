@@ -8,10 +8,10 @@
     <title>Document</title>
 </head>
 <body>
-<div class="container flex flex-col mx-auto draggable max-w-6xl ">
+<div class="container flex flex-col mx-auto draggable max-w-6xl h-screen">
     <div class="relative flex flex-wrap items-center justify-between w-[90%] lg:w-full bg-white group py-7 shrink-0 mx-auto">
       <div>
-        <span class="text-3xl font-bold">Africa Geo Junior</span>
+        <span class="text-3xl font-bold">AfricaGOjr</span>
       </div>
       <div class="items-center justify-between hidden gap-12 text-black md:flex">
         <!-- <a class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Product</a>
@@ -20,10 +20,10 @@
         <a class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Company</a> -->
       </div>
       <div class="items-center hidden gap-8 md:flex">
-        <button class="flex items-center px-4 py-2 text-sm font-bold rounded-xl bg-purple-100 text-gray-800 hover:bg-black hover:text-white transition duration-300">Log In</button>
-        <button class="flex items-center px-4 py-2 text-sm font-bold rounded-xl bg-purple-100 text-gray-800 hover:bg-black hover:text-white  transition duration-300">
+        <a class="flex items-center px-4 py-2 text-sm font-bold rounded-xl bg-purple-100 text-gray-800 hover:bg-black hover:text-white transition duration-300 cursor-pointer" href="assets/pages/login.php">Log In</a>
+        <a class="flex items-center px-4 py-2 text-sm font-bold rounded-xl bg-purple-100 text-gray-800 hover:bg-black hover:text-white  transition duration-300 cursor-pointer" href="assets/pages/register.php">
           Sign Up
-        </button>
+        </a>
       </div>
       <button onclick="(() => { this.closest('.group').classList.toggle('open')})()" class="flex md:hidden">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -35,8 +35,8 @@
         <a class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Features</a>
         <a class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Pricing</a>
         <a class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Company</a> -->
-        <button class="flex items-center text-sm font-normal text-black">Log In</button>
-        <button class="flex items-center px-4 py-2 text-sm font-bold rounded-xl bg-purple-blue-100 text-purple-blue-600 hover:bg-purple-blue-600 hover:text-white transition duration-300">Sign Up</button>
+        <a class="flex items-center text-sm font-normal text-black">Log In</a>
+        <a class="flex items-center text-sm font-bold rounded-xl bg-purple-blue-100 text-purple-blue-600 hover:bg-purple-blue-600 hover:text-white transition duration-300">Sign Up</a>
       </div>
     </div>
     <div class="grid w-full grid-cols-1 my-auto mt-12 mb-8 md:grid-cols-2 xl:gap-14 md:gap-5">
@@ -61,5 +61,16 @@
       </div>
     </div>
   </div>
+  <div class="countrycards">
+    <?php
+      $mysqli = new mysqli("localhost","root","","africagojr","3306");
+      $sql = "select * from country";
+      $result = $mysqli->query($sql);
+      while($row = $result->fetch_assoc()) {
+      }
+    ?>
+  </div>
+  
+</div>
 </body>
 </html>
