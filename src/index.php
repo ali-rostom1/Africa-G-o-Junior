@@ -35,8 +35,8 @@
         <a class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Features</a>
         <a class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Pricing</a>
         <a class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Company</a> -->
-        <a class="flex items-center text-sm font-normal text-black">Log In</a>
-        <a class="flex items-center text-sm font-bold rounded-xl bg-purple-blue-100 text-purple-blue-600 hover:bg-purple-blue-600 hover:text-white transition duration-300">Sign Up</a>
+        <a class="flex items-center text-sm font-normal text-black" href="assets/pages/login.php">Log In</a>
+        <a class="flex items-center text-sm font-bold rounded-xl bg-purple-blue-100 text-purple-blue-600 hover:bg-purple-blue-600 hover:text-white transition duration-300" href="assets/pages/register.php">Sign Up</a>
       </div>
     </div>
     <div class="grid w-full grid-cols-1 my-auto mt-12 mb-8 md:grid-cols-2 xl:gap-14 md:gap-5">
@@ -63,14 +63,11 @@
   </div>
   <div class="countrycards">
     <?php
-      $mysqli = new mysqli("localhost","root","","africagojr","3306");
+      include "assets/pages/dbConn.php";
       $sql = "select * from country";
-      $result = $mysqli->query($sql);
-      while($row = $result->fetch_assoc()) {
-      }
     ?>
   </div>
-  
+
 </div>
 </body>
 </html>

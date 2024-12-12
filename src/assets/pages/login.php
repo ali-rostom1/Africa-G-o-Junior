@@ -15,10 +15,6 @@
     </style>
 </head>
 <body class="bg-white font-family-karla h-screen">
-    <?php
-        $mysqli = new mysqli("localhost","root","","africagojr","3306");
-        
-    ?>
     <div class="w-full flex flex-wrap">
 
         <!-- Login Section -->
@@ -30,7 +26,7 @@
 
             <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
                 <p class="text-center text-3xl">Welcome.</p>
-                <form class="flex flex-col pt-3 md:pt-8" onsubmit="event.preventDefault();" method="GET">
+                <form class="flex flex-col pt-3 md:pt-8" action="auth.php" method="POST">
                     <div class="flex flex-col pt-4">
                         <label for="email" class="text-lg">Email</label>
                         <input type="email" name="email" id="email" placeholder="your@email.com" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
@@ -38,7 +34,7 @@
     
                     <div class="flex flex-col pt-4">
                         <label for="password" class="text-lg">Password</label>
-                        <input type="password" id="password" placeholder="Password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
+                        <input type="password" name="password" id="password" placeholder="Password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
                     </div>
     
                     <input type="submit" value="Log In" class="bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8">
