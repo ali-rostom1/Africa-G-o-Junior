@@ -41,10 +41,10 @@
             With Africa G-O Junior you can be a geogrophical expert, and start winning those familly gatherings trivia games.
         </p>
         <div class="flex flex-col items-center gap-4 lg:flex-row">
-          <button class="flex items-center py-4 text-sm font-bold text-white px-7 bg-blue-500 hover:bg-black focus:ring-4 focus:ring-blue-100 transition duration-300 rounded-xl">Get started now</button>
-          <button class="flex items-center py-4 text-sm font-medium bg-slate-200 px-7  hover:bg-black hover:text-white transition duration-300 rounded-2xl">
+          <a class="flex items-center py-4 text-sm font-bold text-white px-7 bg-blue-500 hover:bg-black focus:ring-4 focus:ring-blue-100 transition duration-300 rounded-xl" href="#countrys">Get started now</a>
+          <a class="flex items-center py-4 text-sm font-medium bg-slate-200 px-7  hover:bg-black hover:text-white transition duration-300 rounded-2xl" href="assets/pages/register.php">
             SIGN UP
-          </button>
+          </a>
         </div>
       </div>
       <div class="items-center justify-end hidden col-span-1 md:flex">
@@ -52,11 +52,22 @@
       </div>
     </div>
   </div>  
-  <div class="w-[20%] h-10 border">
-    
+  <div class="container flex flex-wrap justify-center items-center gap-5 mx-auto max-w-6xl min-h-screen py-5" id="countrys">
+    <?php
+      include "assets/pages/dbConn.php";
+      $sql = "select ctr.name,ctr.pop,ctr.lang,ctr.id_country from country ctr,continent ct where ctr.id_continent=ct.id_continent and ct.name = 'africa'";
+      $res = $mysqli->query($sql);
+      while($row = $res->fetch_assoc()){
+        echo '<div id="." class="w-[25%] h-32 rounded-xl shadow-xl bg-black text-white flex flex-col items-center justify-center font-bold text-lg text-center hover:scale-110 transition duration-300">
+                <div>'.$row['name'].'</div>
+                <div class="text-sm">pop: '.$row['pop'].'</div>
+                <div class="text-sm">langs: '.$row['lang'].'</div>
+              </div> ';
+      }
+      
+    ?> 
   </div>
-  <div class="w-[20%] h-10 border">
-
-  </div>
+  <div class=""></div>
+  <script src="script.js"></script>
 </body>
 </html>
