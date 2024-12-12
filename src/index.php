@@ -5,19 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/output.css">
     <link rel="stylesheet" href="assets/css/input.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/home.css">
+    <title>AfricaGOjr</title>
 </head>
 <body>
-<div class="container flex flex-col mx-auto draggable max-w-6xl h-screen">
+  <div class="container flex flex-col mx-auto max-w-6xl h-screen">
     <div class="relative flex flex-wrap items-center justify-between w-[90%] lg:w-full bg-white group py-7 shrink-0 mx-auto">
       <div>
         <span class="text-3xl font-bold">AfricaGOjr</span>
-      </div>
-      <div class="items-center justify-between hidden gap-12 text-black md:flex">
-        <!-- <a class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Product</a>
-        <a class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Features</a>
-        <a class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Pricing</a>
-        <a class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Company</a> -->
       </div>
       <div class="items-center hidden gap-8 md:flex">
         <a class="flex items-center px-4 py-2 text-sm font-bold rounded-xl bg-purple-100 text-gray-800 hover:bg-black hover:text-white transition duration-300 cursor-pointer" href="assets/pages/login.php">Log In</a>
@@ -31,10 +26,6 @@
         </svg>
       </button>
       <div class="absolute flex md:hidden transition-all duration-300 ease-in-out flex-col items-start shadow-main justify-center w-full gap-3 overflow-hidden bg-white max-h-0 group-[.open]:py-4 px-4 rounded-2xl group-[.open]:max-h-64 top-full">
-        <!-- <a class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Product</a>
-        <a class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Features</a>
-        <a class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Pricing</a>
-        <a class="text-sm font-normal text-dark-grey-700 hover:text-dark-grey-900" href="javascript:void(0)">Company</a> -->
         <a class="flex items-center text-sm font-normal text-black" href="assets/pages/login.php">Log In</a>
         <a class="flex items-center text-sm font-bold rounded-xl bg-purple-blue-100 text-purple-blue-600 hover:bg-purple-blue-600 hover:text-white transition duration-300" href="assets/pages/register.php">Sign Up</a>
       </div>
@@ -60,14 +51,12 @@
         <img class="w-4/5 rounded-md" src="assets/images/hero_africa.png" alt="header image">
       </div>
     </div>
+  </div>  
+  <div class="w-[20%] h-10 border">
+    
   </div>
-  <div class="countrycards">
-    <?php
-      include "assets/pages/dbConn.php";
-      $sql = "select * from country";
-    ?>
-  </div>
+  <div class="w-[20%] h-10 border">
 
-</div>
+  </div>
 </body>
 </html>
