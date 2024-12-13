@@ -6,13 +6,14 @@
     <link rel="stylesheet" href="assets/css/output.css">
     <link rel="stylesheet" href="assets/css/input.css">
     <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>AfricaGOjr</title>
 </head>
 <body>
   <div class="container flex flex-col mx-auto max-w-6xl h-screen">
     <div class="relative flex flex-wrap items-center justify-between w-[90%] lg:w-full bg-white group py-7 shrink-0 mx-auto">
       <div>
-        <span class="text-3xl font-bold">AfricaGOjr</span>
+        <a href="index.php" class="text-3xl font-bold">AfricaGOjr</a>
       </div>
       <div class="items-center hidden gap-8 md:flex">
         <a class="flex items-center px-4 py-2 text-sm font-bold rounded-xl bg-purple-100 text-gray-800 hover:bg-black hover:text-white transition duration-300 cursor-pointer" href="assets/pages/login.php">Log In</a>
@@ -41,7 +42,7 @@
             With Africa G-O Junior you can be a geogrophical expert, and start winning those familly gatherings trivia games.
         </p>
         <div class="flex flex-col items-center gap-4 lg:flex-row">
-          <a class="flex items-center py-4 text-sm font-bold text-white px-7 bg-blue-500 hover:bg-black focus:ring-4 focus:ring-blue-100 transition duration-300 rounded-xl" href="#countrys">Get started now</a>
+          <a class="flex items-center py-4 text-sm font-bold text-white px-7 bg-blue-500 hover:bg-black focus:ring-4 focus:ring-blue-100 transition duration-300 rounded-xl" href="#container">Get started now</a>
           <a class="flex items-center py-4 text-sm font-medium bg-slate-200 px-7  hover:bg-black hover:text-white transition duration-300 rounded-2xl" href="assets/pages/register.php">
             SIGN UP
           </a>
@@ -52,22 +53,39 @@
       </div>
     </div>
   </div>  
-  <div class="container flex flex-wrap justify-center items-center gap-5 mx-auto max-w-6xl min-h-screen py-5" id="countrys">
-    <?php
-      include "assets/pages/dbConn.php";
-      $sql = "select ctr.name,ctr.pop,ctr.lang,ctr.id_country from country ctr,continent ct where ctr.id_continent=ct.id_continent and ct.name = 'africa'";
+  <div class="container flex flex-wrap justify-center items-center gap-5 mx-auto max-w-6xl min-h-screen py-5 relative" id="container">
+  <?php
+    include "assets/pages/dbConn.php";
+
+
+    if (isset($_GET['id_country'])) {
+      $id_country = $_GET['id_country'];
+      $sql = "SELECT * FROM city WHERE id_country = ?";
+      $stmt = $mysqli->prepare($sql);
+      $stmt->bind_param("i", $id_country);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      echo '<a href="index.php#container" class="absolute top-[5%] left-[10%] bg-black py-2 px-4"><i class="fa-solid fa-arrow-left text-3xl text-white"></i></a>';
+      while ($row = $result->fetch_assoc()) {
+        echo '<div class="city-card w-[25%] h-32 rounded-xl shadow-xl bg-blue-800 text-white flex flex-col items-center justify-center font-bold text-lg text-center hover:scale-110 transition duration-300">
+                <div>'.$row['name'].'</div>
+                <div class="font-bold">Type: <span class="font-normal">'.$row['type'].'</span></div>
+              </div>';
+      }
+    }else{
+      $sql = "SELECT ctr.name, ctr.pop, ctr.lang, ctr.id_country FROM country ctr, continent ct WHERE ctr.id_continent = ct.id_continent AND ct.name = 'africa'";
       $res = $mysqli->query($sql);
-      while($row = $res->fetch_assoc()){
-        echo '<div id="." class="w-[25%] h-32 rounded-xl shadow-xl bg-black text-white flex flex-col items-center justify-center font-bold text-lg text-center hover:scale-110 transition duration-300">
+      while ($row = $res->fetch_assoc()) {
+        echo '<a href="index.php?id_country='.$row['id_country'].'#container" class="card w-[25%] h-32 rounded-xl shadow-xl bg-black text-white flex flex-col items-center justify-center font-bold text-lg text-center hover:scale-110 transition duration-300">
                 <div>'.$row['name'].'</div>
                 <div class="text-sm">pop: '.$row['pop'].'</div>
                 <div class="text-sm">langs: '.$row['lang'].'</div>
-              </div> ';
+              </a>';
       }
-      
-    ?> 
+}
+?>
+
   </div>
-  <div class=""></div>
-  <script src="script.js"></script>
+  <script src="assets/js/script.js"></script>
 </body>
 </html>
