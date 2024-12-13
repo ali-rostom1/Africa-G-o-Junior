@@ -113,7 +113,7 @@
                             <a href="admin.php?id_country='.$el['id_country'].'" class="text-green-500 hover:text-indigo-900">cities</a>
                         </td>
                         <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                            <a href="form.php?id_country='.$el["id_country"].'" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                         </td>
                         <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
                             <a href="delete.php?id_country='.$el["id_country"].'" class="text-red-500 hover:text-indigo-900">delete</a>
@@ -153,7 +153,7 @@
                             <div class="text-sm leading-5 text-gray-900">'.$el["name1"].'</div>
                         </td>
                         <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                            <a href="form.php?id_country='.'" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                         </td>
                         <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
                             <a href="delete.php?id_country='.$id_country.'&id_city='.$el["id_city"].'" class="text-red-500 hover:text-indigo-900">delete</a>
