@@ -12,7 +12,15 @@
         $id_country = $_GET["id_country"];
         $sql = "DELETE FROM city where id_city = $id_city";
         $mysqli->query($sql);
-        header("location: admin.php?id_country=$id_country");
+        $sql = "SELECT * from city where id_country=$id_country";
+        $res = $mysqli->query($sql);
+        if($res = $res->fetch_assoc()){
+            header("location: admin.php?id_country=$id_country");
+            exit;
+        }
+        $sql = "DELETE FROM country where id_country=$id_country";
+        $mysqli->query($sql);
+        header("location: admin.php");
     }
     
 ?>

@@ -43,7 +43,7 @@
 
 <div class="mt-4">
     <div class="flex flex-wrap -mx-6">
-        <div class="w-full px-6 sm:w-1/2 xl:w-1/3">
+        <a class="w-full px-6 sm:w-1/2 xl:w-1/3" href="admin.php">
             <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
                 <div class="py-3 px-4 rounded-full bg-indigo-600 bg-opacity-75">
                     <i class="fa-solid fa-flag text-white text-2xl"></i>
@@ -53,7 +53,7 @@
                     <div class="text-gray-500">Total countries</div>
                 </div>
             </div>
-        </div>
+        </a>
 
         <div class="w-full mt-6 px-6 sm:w-1/2 xl:w-1/3 sm:mt-0">
             <div class="flex items-center px-5 py-6 shadow-sm rounded-md bg-white">
