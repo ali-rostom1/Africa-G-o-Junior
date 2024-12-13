@@ -11,7 +11,7 @@
         $res = $res->fetch_assoc();
         if($_POST['password'] == $res['pass']){
             if($res['isadmin'] == 1){
-                echo 'admin';
+                header('location: admin.php');
             }else{
                 header('location: ../../');
             }
