@@ -22,7 +22,7 @@
 <div class="container flex flex-col mx-auto max-w-6xl">
     <div class="relative flex flex-wrap items-center justify-between w-[90%] bg-white group py-7 shrink-0 mx-auto">
       <div>
-        <a href="../../index.php" class="text-3xl font-bold">AfricaGOjr</a>
+        <a href="admin.php" class="text-3xl font-bold">AfricaGOjr</a>
       </div>
       <div class="items-center hidden gap-8 md:flex">
         <a class="flex items-center px-4 py-2 text-sm font-bold rounded-xl bg-purple-100 text-gray-800 hover:bg-black hover:text-white  transition duration-300 cursor-pointer" href="../../">
@@ -68,16 +68,21 @@
         </div>
     </div>
 </div>
-
+<?php 
+    if(!isset($_GET["id_country"])) echo '<span class="font-bold text-3xl mx-5 mt-4">Countries</span>';
+    else echo '<span class="font-bold text-3xl mx-5 mt-4">Cities</span>';
+?>
 <div class="flex flex-col mt-8">
     <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
         <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
             <table class="min-w-full">
             <?php
-                if(!isset($_GET["id_country"])){  
-                    $sql3 = "SELECT ctr.name,ctr.pop,ctr.lang,ctr.id_country,ctr.id_continent FROM COUNTRY ctr,CONTINENT ct WHERE ctr.id_continent = ct.id_continent AND ct.name = 'AFRICA'";
+                if(!isset($_GET["id_country"])){ 
+                    $sql3 = "SELECT ctr.name,ctr.pop,ctr.lang,ctr.id_country FROM COUNTRY ctr,CONTINENT ct WHERE ctr.id_continent = ct.id_continent AND ct.name = 'AFRICA'";
                     $res = $mysqli->query($sql3);
                     $res = $res->fetch_all(MYSQLI_ASSOC);
+                    $sql4 = "SELECT id_continent FROM continent WHERE name = 'AFRICA'";
+                    $id_continent = $mysqli->query($sql4)->fetch_assoc()["id_continent"];
                     echo '<thead>
                     <tr>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Name</th>
@@ -86,7 +91,7 @@
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">languages</th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
-                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"><a href="form.php?add&id_continent='.$res[0]["id_continent"].'">+</a></th>
+                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"><a href="form.php?add&id_continent='.$id_continent.'">+</a></th>
                     </tr>
                 </thead>
                 <tbody class="bg-white">';
