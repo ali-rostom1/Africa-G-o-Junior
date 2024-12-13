@@ -18,7 +18,7 @@
         $sql = "UPDATE city SET name='$name' , type='$type' WHERE id_city=$id_city";
         if($mysqli->query($sql)){
             header("location: admin.php?id_country=$id_country");
-        }  
+        }
     }
 
 ?>

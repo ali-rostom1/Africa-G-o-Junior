@@ -75,7 +75,7 @@
             <table class="min-w-full">
             <?php
                 if(!isset($_GET["id_country"])){  
-                    $sql3 = "SELECT ctr.name,ctr.pop,ctr.lang,ctr.id_country FROM COUNTRY ctr,CONTINENT ct WHERE ctr.id_continent = ct.id_continent AND ct.name = 'AFRICA'";
+                    $sql3 = "SELECT ctr.name,ctr.pop,ctr.lang,ctr.id_country,ctr.id_continent FROM COUNTRY ctr,CONTINENT ct WHERE ctr.id_continent = ct.id_continent AND ct.name = 'AFRICA'";
                     $res = $mysqli->query($sql3);
                     $res = $res->fetch_all(MYSQLI_ASSOC);
                     echo '<thead>
@@ -86,7 +86,7 @@
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">languages</th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
-                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"><a href="form.php?add">+</a></th>
+                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"><a href="form.php?add&id_continent='.$res[0]["id_continent"].'">+</a></th>
                     </tr>
                 </thead>
                 <tbody class="bg-white">';
@@ -129,7 +129,7 @@
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Type</th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Country</th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
-                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"><a href="form.php?add&id_country='.$_GET["id_country"].'">+</a></th>
                     </tr>
                 </thead>';
                     
