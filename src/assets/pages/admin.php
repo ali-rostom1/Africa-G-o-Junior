@@ -73,8 +73,8 @@
     <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
         <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
             <table class="min-w-full">
-                <?php
-                    
+            <?php
+                if(!isset($_GET["id_country"])){  
                     $sql3 = "SELECT ctr.name,ctr.pop,ctr.lang,ctr.id_country FROM COUNTRY ctr,CONTINENT ct WHERE ctr.id_continent = ct.id_continent AND ct.name = 'AFRICA'";
                     $res = $mysqli->query($sql3);
                     $res = $res->fetch_all(MYSQLI_ASSOC);
@@ -84,6 +84,7 @@
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Continent</th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">population</th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">languages</th>
+                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
                     </tr>
@@ -108,7 +109,9 @@
                         </td>
 
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">'.$el['lang'].'</td>
-
+                        <td class="px-6 py-4  text-right border-b border-gray-200 text-sm leading-5 font-medium">
+                            <a href="admin.php?id_country='.$el['id_country'].'" class="text-green-500 hover:text-indigo-900">cities</a>
+                        </td>
                         <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
                             <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                         </td>
@@ -118,9 +121,45 @@
                     </tr>';
                     }
                     echo'</tbody>';
+                }else{
                     
+                    echo '<thead>
+                    <tr>
+                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Country</th>
+                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+                    </tr>
+                </thead>';
                     
-                
+                    $id_country=$_GET['id_country'];
+                    $sql = "SELECT ctr.name name1,ct.name name2,ct.type,ct.id_city FROM city ct, country ctr WHERE ct.id_country=$id_country and ctr.id_country=ct.id_country";
+                    $res = $mysqli->query($sql);
+                    $res = $res->fetch_all(MYSQLI_ASSOC);
+                    foreach($res as $el){
+                        echo '<tr>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                            <div class="flex items-center">
+                                <div class="ml-4">
+                                    <div class="text-sm leading-5 font-medium text-gray-900">'.$el["name2"].'</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">'.$el["type"].'</span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                            <div class="text-sm leading-5 text-gray-900">'.$el["name1"].'</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+                            <a href="delete.php?id_country='.$id_country.'&id_city='.$el["id_city"].'" class="text-red-500 hover:text-indigo-900">delete</a>
+                        </td>';
+                    }
+                }
                 ?>
             </table>
         </div>
