@@ -25,7 +25,7 @@
         <a href="../../index.php" class="text-3xl font-bold">AfricaGOjr</a>
       </div>
       <div class="items-center hidden gap-8 md:flex">
-        <a class="flex items-center px-4 py-2 text-sm font-bold rounded-xl bg-purple-100 text-gray-800 hover:bg-black hover:text-white  transition duration-300 cursor-pointer" href="assets/pages/register.php">
+        <a class="flex items-center px-4 py-2 text-sm font-bold rounded-xl bg-purple-100 text-gray-800 hover:bg-black hover:text-white  transition duration-300 cursor-pointer" href="../../">
           Log out
         </a>
       </div>
@@ -86,7 +86,7 @@
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">languages</th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
-                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"><a href="form.php?add">+</a></th>
                     </tr>
                 </thead>
                 <tbody class="bg-white">';
@@ -153,7 +153,7 @@
                             <div class="text-sm leading-5 text-gray-900">'.$el["name1"].'</div>
                         </td>
                         <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
-                            <a href="form.php?id_country='.'" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                            <a href="form.php?id_country='.$id_country.'&id_city='.$el["id_city"].'" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                         </td>
                         <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
                             <a href="delete.php?id_country='.$id_country.'&id_city='.$el["id_city"].'" class="text-red-500 hover:text-indigo-900">delete</a>
